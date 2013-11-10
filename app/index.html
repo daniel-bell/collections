@@ -26,7 +26,28 @@
 		<![endif]-->
 
 		<!-- Add your site or application content here -->
-		<div class="container" ng-view="">
+		<div class="container">
+			<div class="row">
+				
+
+				<nav class="navbar navbar-default" role="navigation">
+				  <!-- Brand and toggle get grouped for better mobile display -->
+				  <div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				      <span class="sr-only">Toggle navigation</span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				    </button>
+				    <a class="navbar-brand" href="#">Collections</a>
+				  </div>
+				</nav>
+			</div>
+			<div class="row ng-view">
+			</div>
+			<div class="row footer">
+					<p>Collections - A Tool for Collecting Things</p>
+			</div>
 		</div>
 
 		<script src="bower_components/jquery/jquery.js"></script>

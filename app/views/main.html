@@ -1,34 +1,39 @@
-<div class="row">
-	<div class="header">
-		<ul class="nav nav-pills pull-right">
-			<li class="active"><a href="">Login</a></li>
-		</ul>
-		<h3 class="text-muted">collections</h3>
+	<div class="col-md-3 collections">
+		<p>
+			<form role="form">
+				<div class="form-group">
+					<input type="text" ng-model="collectionSearch">
+					<button ng-click="addCollection();">+</button>
+				</div>
+			</form>
+		</p>
+		<p>
+			<ul>
+				<li ng-repeat="collection in collections">
+					<a href="" ng-click="changeCollection(collection);">
+						<span ng-if="collection == currentCollection;">
+							<b>{{ collection.name }}</b>
+						</span>
+						<span ng-if="collection != currentCollection;">
+							{{ collection.name }}
+						</span>
+					</a>
+				</li>
+			</ul>
+		</p>
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-2 collections">
-		<form>
-			<input type="text" ng-model="collectionSearch">
-			<button ng-click="addCollection();">+</button>
-		</form>
-		<ul>
-			<li ng-repeat="collection in collections"><a href="" ng-click="changeCollection(collection);">{{ collection.name }}</a></li>
-		</ul>
+	<div class="col-md-9">
+		<p>
+			<form role="form">
+				<div class="form-group">
+					<input type="text" ng-model="newItem">
+					<button ng-click="addItem();">+</button>
+				</div>
+			</form>
+		</p>
+		<table class="table table-striped">
+			<tr ng-repeat="item in currentCollection.items">
+				<td>{{ item }}</td>
+			</tr>
+		</table>
 	</div>
-	<div class="col-md-9 col-md-offset-1">
-		<h3>{{ currentCollection.name }}</h3>
-		<form>
-			<input type="text" ng-model="newItem">
-			<button ng-click="addItem();">+</button>
-		</form>
-		<ul>
-			<li ng-repeat="item in currentCollection.items">{{ item }}</li>
-		</ul>
-	</div>
-</div>
-<div class="row">
-	<div class="footer">
-		<p>Collections - A Tool for Collecting Things</p>
-	</div>
-</div>

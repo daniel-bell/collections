@@ -2,10 +2,10 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
-.collections form button{
-    float: left;
-}
-
 .collections ul li{
     list-style: none;
+}
+
+.footer{
+    text-align: center;
 }
