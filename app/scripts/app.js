@@ -4,7 +4,7 @@ angular.module('collectionsApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -15,4 +15,4 @@ angular.module('collectionsApp', [
       .otherwise({
         redirectTo: '/'
       });
-  });
+});
