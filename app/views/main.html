@@ -1,26 +1,29 @@
 	<div class="col-md-3 collections">
-		<p>
 			<h4>Collections</h4>
-			<form role="form">
-				<div class="form-group">
-					<input type="text" ng-model="collectionSearch">
-					<button class="btn btn-xs btn-success" ng-click="addCollection();">+</button>
-				</div>
+				<form role="form">
+					<div class="input-group">
+						<input type="text" class="form-control" ng-model="collectionSearch" placeholder="A new collection">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-success" ng-click="addCollection();">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+						</span>
+					</div>
 			</form>
-		</p>
 		<p>
 			<ul>
 				<li ng-repeat="collection in collections | filter:collectionSearch">
-					<a href="" ng-click="changeCollection(collection);">
-						<span ng-if="collection == currentCollection;">
-							<b>{{ collection.name }}</b>
-						</span>
-						<span ng-if="collection != currentCollection;">
-							{{ collection.name }}
-						</span>
-					</a>
 					<a href="" ng-click="deleteCollection(collection);">
 						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+
+					<a href="" ng-click="changeCollection(collection);">
+						<span ng-if="collection == currentCollection;">
+							<b>{{ collection.getName() }}</b>
+						</span>
+						<span ng-if="collection != currentCollection;">
+							{{ collection.getName() }}
+						</span>
 					</a>
 				</li>
 			</ul>
@@ -28,28 +31,39 @@
 	</div>
 	<div class="col-md-9">
 		<p>
-			<h4 ng-if="currentCollection.name != null">
-				{{ currentCollection.name }}
+			<h4 ng-if="currentCollection.getName() != null">
+				{{ currentCollection.getName() }}
+				<a href=""><span class="glyphicon glyphicon-pencil"></span></a>
 			</h4>
-			<h4 ng-if="currentCollection.name == null">
+			<h4 ng-if="currentCollection.getName() == null">
 				An Empty List
 			</h4>
 			<form role="form">
-				<div class="form-group">
-					<input type="text" ng-model="newItem">
-					<button class="btn btn-xs btn-success" ng-click="addItem();">+</button>
+				<div class="input-group">
+					<input type="text" class="form-control" ng-model="newItem">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-success" ng-click="addItem();">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</span>
 				</div>
 			</form>
 		</p>
-		<span ng-if="!(currentCollection.items == null && currentCollection.items == []);">
+		<span ng-if="!(currentCollection.getItems() == null && currentCollection.getItems() == []);">
 			<table class="table table-striped">
-					<tr ng-repeat="item in currentCollection.items">
+					<tr>
+						<td style="width:48px;"></td>
+						<td>Item</td>
+						<td>Date Created</td>
+					</tr>
+					<tr ng-repeat="item in currentCollection.getItems()">
 						<td style="width:48px;">
 							<a href="" ng-click="deleteItem(item);">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>
-						<td>{{ item }}</td>
+						<td>{{ item.getContent(); }}</td>
+						<td>{{ item.getDateCreated(); }}</td>
 					</tr>
 			</table>
 		</span>
